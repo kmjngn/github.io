@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김진근 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Bebas+Neue&family=DM+Mono:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg2: #111111;
+  --bg3: #181818;
+  --line: #1e1e1e;
+  --gold: #c8963c;
+  --gold-light: #e8b96a;
+  --text: #d0d0d0;
+  --text-dim: #787878;
+  --text-bright: #f0f0f0;
+  --white: #ffffff;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  height: 60px;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  color: var(--gold-light);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex; gap: 32px; list-style: none;
+}
+.nav-links a {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-dim); text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-contact {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none;
+  border: 1px solid var(--gold);
+  padding: 7px 16px;
+  transition: all 0.2s;
+}
+.nav-contact:hover { background: var(--gold); color: var(--bg); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 0 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg-text {
+  position: absolute; top: 50%; left: -10px;
+  transform: translateY(-55%);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(160px, 22vw, 320px);
+  color: rgba(255,255,255,0.025);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px; letter-spacing: 0.25em; color: var(--gold);
+  margin-bottom: 20px;
+  animation: fadeUp 0.8s 0.2s both;
+}
+.hero-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(72px, 10vw, 140px);
+  line-height: 0.9; letter-spacing: 0.04em;
+  color: var(--text-bright);
+  animation: fadeUp 0.8s 0.35s both;
+}
+.hero-name span { color: var(--gold-light); }
+.hero-desc {
+  margin-top: 28px; max-width: 580px;
+  font-size: 15px; color: var(--text-dim); line-height: 1.9;
+  animation: fadeUp 0.8s 0.5s both;
+}
+.hero-desc strong { color: var(--text); font-weight: 500; }
+.hero-scroll {
+  margin-top: 48px;
+  display: flex; align-items: center; gap: 12px;
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  letter-spacing: 0.2em; color: var(--text-dim);
+  animation: fadeUp 0.8s 0.65s both;
+}
+.hero-scroll::before {
+  content: ''; display: block;
+  width: 40px; height: 1px; background: var(--text-dim);
+}
+.hero-year {
+  position: absolute; right: 48px; bottom: 80px;
+  font-family: 'DM Mono', monospace; font-size: 11px;
+  letter-spacing: 0.2em; color: var(--line);
+  writing-mode: vertical-rl;
+  animation: fadeUp 0.8s 0.8s both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION LABEL ── */
+.section-tag {
+  display: flex; align-items: center; gap: 16px;
+  padding: 14px 48px;
+  background: var(--bg2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.section-tag-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--text-dim);
+}
+.section-tag-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ── PROJECT ── */
+.project {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--line);
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.project.visible { opacity: 1; transform: translateY(0); }
+
+.project-text {
+  padding: 48px 48px 48px 48px;
+  border-right: 1px solid var(--line);
+}
+.project-media {
+  padding: 48px 48px 48px 48px;
+  display: flex; flex-wrap: wrap; gap: 8px;
+  align-content: flex-start;
+  background: var(--bg2);
+}
+
+/* full-width layout (no images) */
+.project.full-width { grid-template-columns: 1fr; }
+.project.full-width .project-text {
+  border-right: none;
+  max-width: 800px;
+}
+
+.project-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.2em; color: var(--gold);
+  margin-bottom: 12px;
+}
+.project-title {
+  font-size: 20px; font-weight: 700;
+  color: var(--text-bright); line-height: 1.35;
+  margin-bottom: 8px;
+}
+.project-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px; letter-spacing: 0.1em; color: var(--gold);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.project-body {
+  font-size: 13.5px; color: var(--text-dim);
+  line-height: 1.95; font-weight: 300;
+}
+.project-result {
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: var(--bg3);
+  border-left: 2px solid var(--gold);
+  font-size: 12.5px; color: var(--text-bright);
+  line-height: 1.7;
+}
+.result-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 0.25em;
+  color: var(--gold); display: block; margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.project-media img {
+  width: calc(50% - 4px);
+  height: 160px; object-fit: cover;
+  display: block;
+  filter: brightness(0.9) saturate(0.85);
+  transition: filter 0.3s, transform 0.3s;
+}
+.project-media img:hover {
+  filter: brightness(1) saturate(1);
+  transform: scale(1.02);
+  z-index: 1; position: relative;
+}
+.project-media img.img-wide {
+  width: 100%; height: 200px;
+}
+
+/* ── CLOSING ── */
+.closing {
+  min-height: 60vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center;
+  padding: 100px 48px;
+  position: relative; overflow: hidden;
+}
+.closing-bg {
+  position: absolute; inset: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(100px, 18vw, 240px);
+  color: rgba(255,255,255,0.018);
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none; user-select: none;
+}
+.closing-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.35em; color: var(--gold);
+  margin-bottom: 20px; text-transform: uppercase;
+}
+.closing-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 8vw, 100px);
+  letter-spacing: 0.08em; color: var(--text-bright);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.closing-rule {
+  width: 40px; height: 1.5px;
+  background: var(--gold); margin: 0 auto 24px;
+}
+.closing-sub {
+  font-size: 14px; color: var(--text-dim); line-height: 2;
+}
+.closing-url {
+  margin-top: 36px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; color: var(--line);
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 24px 48px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: var(--bg2);
+}
+footer p {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; color: var(--text-dim);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .hero { padding: 0 24px 60px; }
+  .hero-bg-text { font-size: 28vw; }
+  .section-tag { padding: 12px 24px; }
+  .project { grid-template-columns: 1fr; }
+  .project-text { border-right: none; padding: 36px 24px; }
+  .project-media { padding: 0 24px 36px; }
+  .project-media img { width: calc(50% - 4px); height: 120px; }
+  .closing { padding: 80px 24px; }
+  footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+  .hero-year { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">KJG</a>
+  <ul class="nav-links">
+    <li><a href="#laundry">세탁특공대</a></li>
+    <li><a href="#product">프로덕트</a></li>
+    <li><a href="#findirect">핀다이렉트</a></li>
+    <li><a href="#wemakeprice">위메프</a></li>
+    <li><a href="#ssf">에잇세컨즈</a></li>
+  </ul>
+  <a href="mailto:" class="nav-contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-text">PORTFOLIO</div>
+  <div class="hero-eyebrow">// 2010 – 2026 &nbsp;&nbsp; Designer · Director · Strategist</div>
+  <h1 class="hero-name">김<span>진</span>근</h1>
+  <p class="hero-desc">
+    <strong>YTN, SSF SHOP, 위메프, 핀다이렉트샵, 세탁특공대</strong>까지.<br>
+    마케팅 · 콘텐츠 · 프로덕트 · 디렉팅 등<br>
+    다양한 디자인 작업물을 준비했습니다.<br>
+    흥미롭고 매력적인 시간이 되시길 바랍니다.
+  </p>
+  <div class="hero-scroll">SCROLL DOWN</div>
+  <div class="hero-year">PORTFOLIO 2026</div>
+</section>
+
+
+<!-- ════════════ 세탁특공대 ════════════ -->
+<div class="section-tag" id="laundry">
+  <div class="section-tag-dot"></div>
+  <div class="section-tag-label">세탁특공대 &nbsp;/&nbsp; 2023 – 2026</div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">01</div>
+    <h2 class="project-title">세탁특공대 '이만큼백원' 광고 캠페인</h2>
+    <div class="project-meta">2025. 11 &nbsp;/&nbsp; 디렉팅</div>
+    <p class="project-body">
+      2025년 신규 고객 유입을 목표로 한 대형 캠페인 '이만큼백원'을 기획 단계부터 리드했습니다. 캠페인 네이밍을 직접 제안하고 '이만큼을 맡겨도 100원'이라는 강력한 메시지가 가장 직관적으로 전달될 수 있도록 크리에이티브 방향성과 키 비주얼 콘셉트를 설계했습니다. 고객이 얼굴이 보이지 않을 정도로 많은 양의 세탁물을 맡겨도 100원이라는 과장된 상황 설정을 통해 메시지 이해도를 극대화했으며, 대행사와 협업하여 영상 및 광고 소재 전반의 비주얼 톤과 표현 강도를 디렉팅했습니다.
+    </p>
+    <div class="project-result">
+      <span class="result-label">Key Results</span>
+      총 727만 도달 · KPI 대비 145% 초과 달성 · 통합 CPV 약 26원 (업계 평균 대비 약 50% 낮은 단가) · 빠더너스 채널 브랜디드 영상 322만 조회수
+    </div>
+  </div>
+  <div class="project-media">
+    <img class="img-wide" src="https://cdn.imweb.me/thumbnail/20260222/ee44a7b521fa3.jpg" alt="이만큼백원 캠페인">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/307e897aa282f.png" alt="캠페인 비주얼 1">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/07b02134879e1.png" alt="캠페인 비주얼 2">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/131151326f29c.png" alt="캠페인 비주얼 3">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">02</div>
+    <h2 class="project-title">세탁특공대 프로모션</h2>
+    <div class="project-meta">2023–2026 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      앱 내 프로모션 페이지는 배너 유입 이후 고객이 혜택을 즉시 이해하고 바로 행동으로 이어가도록 설계했습니다. 핵심 혜택 → 적용 조건 → 유의사항 → CTA 흐름을 정리하고 쿠폰 카드·버튼·안내 모듈 등 컴포넌트를 표준화해 다양한 프로모션 유형에서도 일관된 전환 경험을 만들었습니다.<br><br>
+      29CM 등 외부 파트너와의 제휴 프로모션에서는 파트너 가이드라인을 준수하면서도 세탁특공대의 브랜드 아이덴티티가 흐려지지 않도록 키비주얼, 카피 노출 방식, CTA 형태를 채널 환경에 맞게 조정해 일관성을 확보했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/b03751ee29266.gif" alt="프로모션 1">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/ac267309440d7.png" alt="프로모션 2">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/5e540e23ab8c6.png" alt="프로모션 3">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/6f26b3195cb76.png" alt="프로모션 4">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/dbba737cb16a0.gif" alt="프로모션 5">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/83385569be5a8.png" alt="프로모션 6">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/c45d8d420c42f.png" alt="프로모션 7">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/b62351aa2f35a.png" alt="프로모션 8">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">03</div>
+    <h2 class="project-title">세탁특공대 SNS 콘텐츠</h2>
+    <div class="project-meta">2023–2026 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      서비스 이용 방법 안내, 고객 후기형 콘텐츠, 지역 확장 소식, 케어 서비스 소개, 정기 프로모션 등 서로 성격이 다른 메시지를 한 피드 안에서 명확히 구분하면서도, 세탁특공대의 브랜드 톤앤매너가 유지되도록 카테고리 구분과 시각적 시스템을 구축했습니다. 각 콘텐츠는 모바일 환경에서 첫 1초 주목도와 가독성을 최우선으로 두고 타이포 위계·컬러 대비·키비주얼 중심 구성을 반복 최적화했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/46b2a93be86a1.png" alt="SNS 1">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/4a4b8fea44d84.png" alt="SNS 2">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/c64604986afac.png" alt="SNS 3">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/2be65a0248ae3.png" alt="SNS 4">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/0ad39ee4af87e.png" alt="SNS 5">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/64e25f641a5bb.png" alt="SNS 6">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/5c00f1591fab4.png" alt="SNS 7">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/6eedc1709b291.png" alt="SNS 8">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">04</div>
+    <h2 class="project-title">세탁특공대 앱 스크린샷</h2>
+    <div class="project-meta">2023–2026 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      앱 기능 업데이트나 화면 개선, 프로모션 진행 시점마다 스토어·광고·SNS 등 다양한 채널에서 활용되는 앱 스크린샷 크리에이티브를 수시로 제작했습니다. 신규 고객이 서비스를 빠르게 이해할 수 있도록 신청 → 품목 선택 → 요청 옵션 설정 → 접수/완료로 이어지는 경험 흐름을 기준으로 스토리보드를 구성했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/57c2e8422d7b7.jpg" alt="스크린샷 1">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/a4ee2ea4a1d6a.jpg" alt="스크린샷 2">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/bbe587915cc49.jpg" alt="스크린샷 3">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/c6a9ca51bd608.jpg" alt="스크린샷 4">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/3ac6e4606b0fc.jpg" alt="스크린샷 5">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/b0b622368a070.jpg" alt="스크린샷 6">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">05</div>
+    <h2 class="project-title">세탁특공대 광고 소재</h2>
+    <div class="project-meta">2023–2026 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      네이버, Meta, 카카오 등 매체별 노출 환경이 다른 만큼 고객이 핵심 혜택을 즉시 이해할 수 있도록 짧은 헤드라인과 강한 시각적 대비를 중심으로 구조를 설계했고, 채널별 화면 비율과 소비 방식에 맞춰 정보의 밀도·카피 길이·CTA 배치를 조정했습니다. 마케터와 함께 A/B 테스트를 통해 크리에이티브 가설을 검증하며 전환에 영향을 주는 요소를 찾아 반복 개선했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/e2a8517682212.png" alt="광고 1">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/b7bec3cbc385e.png" alt="광고 2">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/3ab3361ac2dfe.png" alt="광고 3">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/c01c5bc6ac9f0.png" alt="광고 4">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">06</div>
+    <h2 class="project-title">세탁특공대 시즈널 프로모션</h2>
+    <div class="project-meta">2023–2026 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      계절성과 고객 생활 패턴을 기반으로 시즈널 프로모션을 기획·디자인했습니다. 특히 참여도 증대를 목표로 설계한 '세특볼' 이벤트는 게임형 리워드 구조를 적용해 고객의 체류 및 재방문을 유도했습니다. 단순 노출 중심 캠페인이 아닌 참여 기반 전환 설계의 효과를 검증한 프로젝트입니다.
+    </p>
+    <div class="project-result">
+      <span class="result-label">Key Results</span>
+      세특볼 이벤트 CTR 50.5% · 이벤트 방문자 중 약 20% 실제 주문 전환 · 2025년 전체 프로모션 중 최고 효율
+    </div>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20240418/490b1829d71b2.png" alt="시즈널 1">
+    <img src="https://cdn.imweb.me/thumbnail/20240418/abbee97ef34ea.gif" alt="시즈널 2">
+    <img src="https://cdn.imweb.me/thumbnail/20240418/20e3220dd1411.png" alt="시즈널 3">
+    <img src="https://cdn.imweb.me/thumbnail/20240418/2b42b850a36d9.gif" alt="시즈널 4">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/8e45664a0ac17.png" alt="시즈널 5">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/81be8fcd39290.gif" alt="시즈널 6">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/eea342f23e0c3.png" alt="시즈널 7">
+    <img src="https://cdn.imweb.me/thumbnail/20260223/80033b5d956d2.png" alt="시즈널 8">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">07</div>
+    <h2 class="project-title">빈티지 스토어 'WASHER' 브랜드 디자인</h2>
+    <div class="project-meta">2024–2025 &nbsp;/&nbsp; 디자인 및 촬영 100%</div>
+    <p class="project-body">
+      세탁특공대의 신규 오프라인 프로젝트 'WASHER'의 브랜드 아이덴티티를 기획부터 디자인까지 주도했습니다. 100g당 1,500원에 판매하는 무게 기반 빈티지 스토어라는 차별화된 구조를 고객이 직관적으로 이해할 수 있도록, 미국 빈티지 세탁소 무드를 기반으로 한 비주얼 시스템을 설계했습니다. 로고, 공간 그래픽, 쇼핑백, 티켓, 포스터 등 모든 접점에서 레드·블루 중심의 컬러와 클래식 타이포를 일관되게 적용했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <!-- WASHER brand images loaded via JS from the "더보기" section -->
+    <img src="https://cdn.imweb.me/thumbnail/20260222/ee44a7b521fa3.jpg" alt="WASHER 1" style="width:100%;height:220px;">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">08</div>
+    <h2 class="project-title">세탁특공대 포토그래피</h2>
+    <div class="project-meta">2023–2026 &nbsp;/&nbsp; 촬영 및 보정 100%</div>
+    <p class="project-body">
+      직무 인터뷰 콘텐츠나 채용/홈페이지에 사용할 이미지가 필요할 때, 포토그래퍼 없이도 일정과 목적에 맞춰 촬영부터 보정까지 진행했습니다. 촬영 이후에는 컷 셀렉과 함께 톤 보정, 크롭 및 비율별 리사이징까지 진행해 채널별 규격에 맞는 이미지 에셋으로 완성했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/94503bacfe7a6.jpg" alt="포토 1">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/c748d27fac824.jpg" alt="포토 2">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/2496fa6db6c94.jpg" alt="포토 3">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/39d90518228b5.jpg" alt="포토 4">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/734bae3207c32.jpg" alt="포토 5">
+    <img src="https://cdn.imweb.me/thumbnail/20260225/fe884408e1a66.jpg" alt="포토 6">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">09</div>
+    <h2 class="project-title">세탁특공대 배너 가이드 제작</h2>
+    <div class="project-meta">2023 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      앱 내에서 반복적으로 제작되는 배너, 홈 팝업 등의 디자인 품질과 제작 효율을 높이기 위해 제작 가이드를 구축했습니다. 배너 유형별 레이아웃 규칙, 텍스트 위계와 안전 영역, 배경 컬러 팔레트, 이미지 사용 방식 등을 표준화해 누구나 동일한 기준으로 제작할 수 있도록 정리했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/88858f46ff926.png" alt="배너가이드" style="width:100%;height:220px;">
+  </div>
+</div>
+
+
+<!-- ════════════ 프로덕트 ════════════ -->
+<div class="section-tag" id="product">
+  <div class="section-tag-dot"></div>
+  <div class="section-tag-label">프로덕트 디자인</div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">10</div>
+    <h2 class="project-title">'POLY GROUND' 프로덕트 디자인</h2>
+    <div class="project-meta">2024–2025 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      3D 애셋 마켓플레이스 Polyground의 웹 제품 디자인을 PC와 모바일 환경으로 설계했습니다. 사용자가 방대한 에셋을 빠르게 찾고 비교할 수 있도록 검색/필터 중심의 정보 구조를 잡고, 컬렉션–상품 리스트–상세로 이어지는 탐색 흐름을 단순화했습니다. 다크 UI 기반에서 에셋 썸네일이 가장 돋보이도록 시각적 위계를 정리하고, 카드·그리드·배지 등 컴포넌트를 시스템화해 확장 가능한 레이아웃을 구축했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260222/c3312f57dd88e.png" alt="Poly Ground" style="width:100%;height:220px;">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">11</div>
+    <h2 class="project-title">위메프 '어텐션' 프로덕트 디자인</h2>
+    <div class="project-meta">2015 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      위메프 내 PC 전문 쇼핑몰 '어텐션'의 프론트 UI/UX 디자인을 담당했습니다. CPU/그래픽카드/주변기기 등 제품 스펙 기반으로 탐색과 비교가 잦은 카테고리 특성을 고려해, 사용자가 원하는 상품을 빠르게 찾을 수 있도록 카테고리 구조·필터/정렬·상품 리스트 정보 위계를 정리했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/da85ecbfa3d0d.png" alt="어텐션" style="width:100%;height:220px;">
+  </div>
+</div>
+
+
+<!-- ════════════ 핀다이렉트 ════════════ -->
+<div class="section-tag" id="findirect">
+  <div class="section-tag-dot"></div>
+  <div class="section-tag-label">핀다이렉트샵 &nbsp;/&nbsp; 2021 – 2022</div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">12</div>
+    <h2 class="project-title">핀다이렉트 3D 모델링</h2>
+    <div class="project-meta">2022. 07 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      MVNO 서비스 핀다이렉트에서 'Z 요금제'와 'Wi-Fi Lover' 캠페인에 사용되는 3D 키비주얼을 제작했습니다. Z 이니셜을 유리/크롬 질감으로 해석한 오브젝트와, Wi-Fi Lover를 상징하는 하트 형태 오브젝트 등 브랜드 상징물을 3D로 설계하고 모션까지 완성했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20221030/9dfebe6dc38dc.gif" alt="3D 1">
+    <img src="https://cdn.imweb.me/thumbnail/20221030/a4991ca099d4b.gif" alt="3D 2">
+    <img src="https://cdn.imweb.me/thumbnail/20260222/2c658656a4aa4.gif" alt="3D 3" style="width:100%">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">13</div>
+    <h2 class="project-title">핀다이렉트 요금제 콘텐츠</h2>
+    <div class="project-meta">2022. 06 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      eSIM 요금제 출시 시점에 맞춰, 신규 고객이 eSIM의 개념과 혜택을 빠르게 이해하고 가입까지 이어지도록 요금제 프로모션 콘텐츠를 기획·디자인했습니다. 상세페이지 내 여러 구간에 자연스럽게 삽입될 수 있도록 카드/배너 형태의 모듈형 콘텐츠로 구성했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/1615c4d02aed7.png" alt="요금제" style="width:100%;height:220px;">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">14</div>
+    <h2 class="project-title">핀다이렉트 SNS 콘텐츠</h2>
+    <div class="project-meta">2022. 05 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      핀다이렉트의 다양한 요금제 메시지가 한눈에 구분되도록, 요금제 성격에 맞춘 SNS 콘텐츠 비주얼을 기획·제작했습니다. '무제한/데이터 중심/혜택형/제휴·리퍼럴' 등 각 요금제의 톤을 시각적으로 번역해 컬러·타이포·그래픽 모티프를 달리한 크리에이티브 콘셉트를 구성했습니다.
+    </p>
+  </div>
+  <div class="project-media" style="padding:48px 24px;">
+    <!-- 더보기 섹션 이미지들 -->
+    <img src="https://cdn.imweb.me/thumbnail/20260226/1615c4d02aed7.png" alt="SNS 핀다이렉트" style="width:100%;height:200px;">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">15</div>
+    <h2 class="project-title">카카오페이 스마트폰샵 프로모션</h2>
+    <div class="project-meta">2021. 03 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      핀다이렉트가 카카오페이 스마트폰샵으로 런칭하는 시점에 맞춰, 신규 유입과 구매 전환을 목표로 런칭 프로모션 비주얼을 기획·디자인했습니다. '카톡으로 빠르게 주문'이라는 핵심 메시지를 전면에 배치하고, 메인 키비주얼부터 요금제 안내까지 탐색 → 비교 → 선택으로 이어지는 흐름으로 구성했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/4f3f98d72f571.png" alt="카카오페이" style="width:100%;height:220px;">
+  </div>
+</div>
+
+
+<!-- ════════════ 위메프 ════════════ -->
+<div class="section-tag" id="wemakeprice">
+  <div class="section-tag-dot"></div>
+  <div class="section-tag-label">위메프 &nbsp;/&nbsp; 2013 – 2020</div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">16</div>
+    <h2 class="project-title">위메프 '슈퍼반값타임' 프로모션</h2>
+    <div class="project-meta">2019. 10 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      위메프 자회사 히든프라이스 앱의 대표 타임세일 프로모션 '슈퍼반값타임' 시리즈를 위한 프로모션 이미지를 제작했습니다. 가격/할인율/시간 정보의 우선순위를 명확히 설계하고, 컬러/레이아웃/배지 규칙을 시스템화하여 매 회차 빠르게 확장 제작할 수 있도록 했습니다.
+    </p>
+    <div class="project-result">
+      <span class="result-label">Key Results</span>
+      화제성 확산으로 네이버 실시간 검색어 1위 기록 · 이후 여러 차례 시리즈로 이어지며 앱 내 주요 캠페인으로 자리잡음
+    </div>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/8b7345f69f8a7.png" alt="슈퍼반값타임" style="width:100%;height:220px;">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">17</div>
+    <h2 class="project-title">위메프 '특가어워즈' 프로모션</h2>
+    <div class="project-meta">2018. 08 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      위메프 전사 규모로 진행된 월간 프로모션 '특가어워즈'의 메인 키비주얼을 제작했습니다. 시상식/페스티벌의 분위기를 연상시키는 무드를 콘셉트로 잡고 여러 소스 이미지를 직접 합성해 하나의 완성도 높은 KV로 구성했습니다. 불꽃/조명/보케 등의 레이어를 활용해 현장감과 스케일감을 강화했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/f2ad6df4134bf.png" alt="특가어워즈" style="width:100%;height:220px;">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">18</div>
+    <h2 class="project-title">위메프 콘텐츠 템플릿 제작</h2>
+    <div class="project-meta">2015 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      위메프 내에서 반복적으로 제작되는 상품 상세페이지의 품질과 제작 속도를 높이기 위해, 상세페이지 템플릿과 콘텐츠 제작 가이드를 설계·제작하고 전사 배포 및 교육까지 진행했습니다. 카메라/가전/리빙 등 카테고리별로 레이아웃 모듈을 표준화하고, 신규/협업 디자이너도 빠르게 온보딩될 수 있도록 실무 기준을 문서화했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/37ac8e3e15314.png" alt="템플릿" style="width:100%;height:220px;">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">19</div>
+    <h2 class="project-title">위메프 브랜드관 프로모션 (Beats by Dr. Dre)</h2>
+    <div class="project-meta">2013–2014 &nbsp;/&nbsp; 디자인 100%</div>
+    <p class="project-body">
+      위메프 내 'Beats by Dr. Dre' 브랜드관 프로모션 페이지의 비주얼/레이아웃 디자인을 진행했습니다. Beats 특유의 강한 컬러 대비와 프리미엄 무드를 살리면서도, 온라인 커머스에서 중요한 상품 탐색과 구매 전환 흐름이 흐트러지지 않도록 페이지 구조를 설계했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/257b7975ef018.png" alt="Beats" style="width:100%;height:220px;">
+  </div>
+</div>
+
+
+<!-- ════════════ 에잇세컨즈 ════════════ -->
+<div class="section-tag" id="ssf">
+  <div class="section-tag-dot"></div>
+  <div class="section-tag-label">에잇세컨즈 / SSF SHOP &nbsp;/&nbsp; 2016 – 2018</div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">20</div>
+    <h2 class="project-title">에잇세컨즈 온라인 콘텐츠 & 썸네일 가이드</h2>
+    <div class="project-meta">2016–2018 &nbsp;/&nbsp; 이미지 셀렉, 리터칭, 크롭 90%</div>
+    <p class="project-body">
+      에잇세컨즈 온라인몰에서 상품의 첫 인상을 결정하는 썸네일 이미지 셀렉 및 제작/적용 업무를 담당했습니다. 카테고리별·상품군별로 가장 설득력 있는 컷을 선별하고, 리스트/상세 페이지에서 제품이 돋보이도록 크롭 기준과 구도, 여백, 색감의 일관성을 맞춰 썸네일을 제작했습니다.<br><br>
+      기존 정면 정자세 컷 중심의 가이드를 리뉴얼해 모델 포즈/시선/동작이 자연스럽게 느껴지는 컷 기준을 새로 설정하고, 상품 실루엣이 잘 보이면서도 스타일링의 무드가 살아나는 구도와 크롭 기준을 확립했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/f99bf3ddf37e1.png" alt="에잇세컨즈 1" style="width:100%;height:200px;">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/e1f4b63656814.png" alt="에잇세컨즈 2" style="width:100%;height:200px;">
+  </div>
+</div>
+
+<div class="project">
+  <div class="project-text">
+    <div class="project-num">21</div>
+    <h2 class="project-title">에잇세컨즈 이미지 리터칭</h2>
+    <div class="project-meta">2016 &nbsp;/&nbsp; 이미지 리터칭 100%</div>
+    <p class="project-body">
+      에잇세컨즈 제품컷 촬영 원본을 전달받아, 온라인몰에 최적화된 형태로 후보정 리터칭을 진행했습니다. 촬영 과정에서 생기기 쉬운 옷의 주름/늘어짐/비대칭을 정리해 실루엣이 깔끔하게 보이도록 형태를 다듬고, 모니터 환경과 촬영 조명에 따라 달라질 수 있는 색상 편차를 줄이기 위해 실물 색상에 맞춘 컬러 매칭 보정을 수행했습니다.
+    </p>
+  </div>
+  <div class="project-media">
+    <img src="https://cdn.imweb.me/thumbnail/20260226/b2cd467be1a36.png" alt="리터칭" style="width:100%;height:220px;">
+  </div>
+</div>
+
+
+<!-- CLOSING -->
+<section class="closing">
+  <div class="closing-bg">THANKS</div>
+  <div class="closing-label">// End of Portfolio</div>
+  <h2 class="closing-title">THANK YOU</h2>
+  <div class="closing-rule"></div>
+  <p class="closing-sub">
+    감사합니다.<br>
+    지금까지 김진근이었습니다.
+  </p>
+  <div class="closing-url">kmjngn-portfolio.imweb.me</div>
+</section>
+
+<footer>
+  <p>© 2026 김진근 &nbsp;/&nbsp; All Rights Reserved</p>
+  <p>Designer · Director · Content Strategist</p>
+</footer>
+
+<script>
+// Scroll-reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.project').forEach(el => observer.observe(el));
+
+// Stagger delay
+document.querySelectorAll('.project').forEach((el, i) => {
+  el.style.transitionDelay = `${(i % 3) * 0.08}s`;
+});
+</script>
+</body>
+</html>
